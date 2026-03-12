@@ -25,20 +25,21 @@ export default function QrCode() {
       });
       } catch (err){
         console.error(err)
-        setError("could not generate")
+        setError("Enter a Valid URL")
 
       } finally{
         setLoading(false)
     }  
     } 
   return (
-    <div className="flex flex-col items-center gap-3 py-4">
+    <div className="flex flex-col items-center gap-3">
+      <h1 className="text-2xl font-bold">QR Code Generator</h1>
         <Image className="rounded-xl" src={imgSrc} alt="QR Code" width={300} height={350}/> 
-        <h1 className="text-2xl">QR Code generator</h1>
-      <input placeholder="Enter site URL..." className="outline-1 w-40 text-center" value={url} onChange={(e) => setUrl(e.target.value)}/>
-      <Button className="bg-blue-300 rounded-2xl w-40 outline-1" onClick={handleGenerateQr}>
+         
+      <input placeholder="Enter site URL..." className="outline-1 w-40 text-center rounded-lg" value={url} onChange={(e) => setUrl(e.target.value)}/>
+      <Button className="bg-blue-700 text-white rounded-2xl w-30 outline-1 hover:bg-blue-300 hover:text-black" onClick={handleGenerateQr}>
         {loading ? "Generating...": "Generate"}</Button>
-      <p>{getWebName(url)}</p>
+      <p className="text-blue-700 font-bold"> {url ? getWebName(url): error}</p>
     </div>
   );
 }

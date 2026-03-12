@@ -6,7 +6,7 @@ export function  getWebName(siteUrl: string): string {
         const url = new URL(siteUrl)
         return url.hostname
     } catch{
-        return "Invalid Url"
+        return ""
     }
 
 }
