@@ -27,18 +27,14 @@ export default function QrCode() {
       } finally{
         setLoading(false)
     }  
-      
-
     } 
   return (
-    <div>
-      <input value={url} onChange={(e) => setUrl(e.target.value)}/>
-      <button onClick={handleGenerateQr}>
-        {loading ? "Generating...": "GenerateQR"}</button>
+    <div className="py-4">
         <img src={imgSrc} alt="QR code" />
-      {error && <p>{error}</p>}
-        
-       
+      <input placeholder="Enter site URL..." className="outline-2" value={url} onChange={(e) => setUrl(e.target.value)}/>
+      <button className="bg-blue-400 rounded-2xl" onClick={handleGenerateQr}>
+        {loading ? "Generating...": "Generate"}</button>
+      <p>{error}</p>
     </div>
   );
 }
