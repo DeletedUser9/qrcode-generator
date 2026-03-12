@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { generateQr } from "../lib/generateQr";
+import Button from "./Button"
+import Image from "next/image";
+import {getWebName} from "../lib/getName"
 
 
 export default function QrCode() {
@@ -29,12 +32,13 @@ export default function QrCode() {
     }  
     } 
   return (
-    <div className="py-4">
-        <img src={imgSrc} alt="QR code" />
-      <input placeholder="Enter site URL..." className="outline-2" value={url} onChange={(e) => setUrl(e.target.value)}/>
-      <button className="bg-blue-400 rounded-2xl" onClick={handleGenerateQr}>
-        {loading ? "Generating...": "Generate"}</button>
-      <p>{error}</p>
+    <div className="flex flex-col items-center gap-3 py-4">
+        <Image className="rounded-xl" src={imgSrc} alt="QR Code" width={300} height={350}/> 
+        <h1 className="text-2xl">QR Code generator</h1>
+      <input placeholder="Enter site URL..." className="outline-1 w-40 text-center" value={url} onChange={(e) => setUrl(e.target.value)}/>
+      <Button className="bg-blue-300 rounded-2xl w-40 outline-1" onClick={handleGenerateQr}>
+        {loading ? "Generating...": "Generate"}</Button>
+      <p>{getWebName(url)}</p>
     </div>
   );
 }
