@@ -8,6 +8,6 @@ def create_qr_code(data):
     qr.add_data(data)
     qr.make(fit=True)
     
-    img = qr.make_image(fill_color="black", back_color="white")
+    img = qr.make_image(fill_color="white", back_color="blue")
     
     return img

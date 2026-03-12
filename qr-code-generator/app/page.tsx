@@ -1,12 +1,11 @@
 "use client";
-import { useState } from "react";
- 
+import QrCode from "./components/QrCode";
 
-export default function App() {
- 
+export default function page() {
+  
   return (
     <div>
-       
+      <QrCode/>       
     </div>
   );
 }
