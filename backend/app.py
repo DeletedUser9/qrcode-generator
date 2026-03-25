@@ -14,7 +14,7 @@ def generate_qr():
     if not data:
         return jsonify({"error": "URL is required"}), 400
     
-    img = create_qr_code(data)
+    img = create_qr_code(data,color)
     
     buffer = BytesIO()
     img.save(buffer, format = "PNG")
