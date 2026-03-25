@@ -10,6 +10,7 @@ CORS(app)
 def generate_qr():
     body = request.get_json()
     data = body.get("url","").strip()
+    color = body.get("color", "")
     if not data:
         return jsonify({"error": "URL is required"}), 400
     

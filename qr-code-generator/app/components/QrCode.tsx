@@ -4,8 +4,11 @@ import Button from "./Button"
 import Image from "next/image";
 import {getWebName} from "../lib/getName"
 
+type QrCodeProps = {
+  color: string;
+}
 
-export default function QrCode() {
+export default function QrCode({color}: QrCodeProps) {
   const [url, setUrl] = useState("");
   const [imgSrc, setImgSrc] = useState("/qr-code.png");
   const [loading, setLoading] = useState(false);
@@ -16,7 +19,7 @@ export default function QrCode() {
     setError("")
 
     try{
-      const objectUrl = await generateQr(url)
+      const objectUrl = await generateQr(url, color)
       setImgSrc((prev) => {
       if (prev.startsWith("blob:")) {
         URL.revokeObjectURL(prev);

@@ -1,6 +1,7 @@
 import qrcode
 
-def create_qr_code(data):
+def create_qr_code(data, color : str):
+    
     qr = qrcode.QRCode(version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
         box_size=10,
@@ -8,6 +9,6 @@ def create_qr_code(data):
     qr.add_data(data)
     qr.make(fit=True)
     
-    img = qr.make_image(fill_color="white", back_color="blue")
+    img = qr.make_image(fill_color="white", back_color = color)
     
     return img

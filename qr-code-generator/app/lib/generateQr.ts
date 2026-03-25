@@ -1,4 +1,5 @@
-export async function generateQr(url: string): Promise<string> {
+
+export async function generateQr(url: string, color: string): Promise<string> {
     const baseurl = process.env.NEXT_PUBLIC_QR_API_URL
 
     if(!baseurl) {
@@ -10,7 +11,7 @@ export async function generateQr(url: string): Promise<string> {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, color }),
     })
 
     if (!res.ok) {
